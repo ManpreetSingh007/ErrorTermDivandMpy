@@ -1,0 +1,77 @@
+/*
+ * @author Manpreet Singh        
+ */
+import java.util.Scanner;
+public class ErrorScanner {
+		public static void main(String[] args) {
+			double  mpy, div,errorTerm1,errorTerm2, ub1, lb1,ub2,lb2,Range,Mean,mpy1,div1;
+			double measureValue1,measureValue2,a,b,mpyvalue1_ef, mpyvalue2_ef, qv1_ef, qv2_ef;
+			String operator;
+			Scanner keyboard = new Scanner(System.in);      
+			System.out.println("Input measured value1: ");  
+			measureValue1= keyboard.nextDouble();
+			System.out.println();                    
+			System.out.println("Input error value1: ");      
+			errorTerm1= keyboard.nextDouble();
+			System.out.println();
+			System.out.println("Value 1:   "+measureValue1+ "\u00B1 "+errorTerm1);   
+			System.out.println();
+			System.out.println("Input measured value 2: ");  
+			measureValue2= keyboard.nextDouble();
+			System.out.println();
+			System.out.println("Input error value 2: ");  
+			errorTerm2= keyboard.nextDouble();
+			System.out.println();
+			System.out.println("Value 2:   "+measureValue2+ "\u00B1 "+errorTerm2);
+			System.out.println();
+			System.out.println("Input the operator for performing operation: +,-,*,/");                   
+	        operator=keyboard.next();
+	         if(operator.equals("+"))                     
+	         {
+			ub1= measureValue1+errorTerm1;
+			lb1= measureValue1-errorTerm1;
+		    ub2= measureValue2+errorTerm2;
+			lb2= measureValue2-errorTerm2;
+			a=ub1+ub2;
+			b= lb1+lb2;
+			Range=(a+b)/2;
+			Mean=(a-b)/2;
+			System.out.println("The result addition is "+Range+" \u00B1 "+Mean);
+	         }
+	         else   if(operator.equals("-"))                      
+	         {
+			ub1= measureValue1+errorTerm1;
+			lb1= measureValue1-errorTerm1;
+			ub2= measureValue2+errorTerm2;
+			lb2= measureValue2-errorTerm2;
+			a=ub1-ub2;
+			b= lb1-lb2;
+			Range=(a+b)/2;
+			Mean=(a-b)/2;
+			System.out.println("The result subtraction is "+Range+" \u00B1 "+Mean);
+	         }
+	         else   if(operator.equals("*"))         
+	         {
+	        mpyvalue1_ef = errorTerm1/measureValue1;
+	        mpyvalue2_ef = errorTerm2/measureValue2;
+	        mpy1=measureValue1*measureValue2 ;
+	        mpy= Math.abs(((mpyvalue1_ef + mpyvalue2_ef)*(mpy1)));
+	        System.out.println("The mpy of the the value are "+mpy1+" \u00B1 "+mpy);	 
+			
+	         }
+	         else   if(operator.equals("/"))        
+	         {
+	        qv1_ef = errorTerm1/measureValue1;
+	        qv2_ef = errorTerm2/measureValue2;
+	        div1=measureValue1/measureValue2 ;
+	        div= Math.abs(((qv1_ef + qv2_ef)*(div1)));
+	        System.out.println("The div of the the value are "+div1+" \u00B1 "+ div);	
+	         }
+	         else {
+	        	 System.out.println("You have typed wrong input");
+	         }
+		keyboard.close();
+		}		
+	}
+ 
+ 
